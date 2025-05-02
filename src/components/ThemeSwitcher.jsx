@@ -17,9 +17,9 @@ const ThemeSwitcher = () => {
   return (
     <div>
       {theme == "light" ?
-        <FaMoon className='text-lg' onClick={handleTheme}/>
+        <FaMoon className='text-lg cursor-pointer' onClick={handleTheme}/>
       :
-        <MdBrightness5 className='text-lg' onClick={handleTheme}/>
+        <MdBrightness5 className='text-lg cursor-pointer' onClick={handleTheme}/>
       }
     </div>
   )

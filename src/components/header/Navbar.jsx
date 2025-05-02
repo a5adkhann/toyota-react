@@ -23,7 +23,7 @@ const Navbar = () => {
   
   return (
     <>
-      <div className={` ${theme == "light" ? "bg-slate-900" : "bg-[#212121]"}  parent-navbar-desktop text-white flex justify-between items-center p-3`}>
+      <div className={` ${theme == "light" ? "bg-slate-900" : "bg-[#212121]"}  parent-navbar-desktop text-white flex justify-between items-center p-3 px-4`}>
         <Link to="/">
           <motion.div
             animate={{
