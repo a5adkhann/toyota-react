@@ -1,15 +1,17 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { LuMapPinMinus } from "react-icons/lu";
 import { CiPhone } from "react-icons/ci";
 import { MdOutlineEmail } from "react-icons/md";
 import { Fade } from 'react-awesome-reveal';
+import { ThemeContext } from './ThemeContext';
 
 const ContactForm = () => {
+    const {theme} = useContext(ThemeContext);
     return (
         <>
             <div className='contact-section md:gap-0 gap-10 grid md:grid-cols-2 grid-cols-1 py-20 mb-10 mt-10 items-center border text-gray-800 border-gray-300 w-[90%] mx-auto'>
 
-                <Fade className='form-section md:px-20 px-10' direction='left' triggerOnce>
+                <Fade className={` ${theme == "light" ? "text-gray-900" : "text-white"} form-section md:px-20 px-10`} direction='left' triggerOnce>
                 <div>
                     <p className='font-bold text-2xl text-center mb-4'>Send Us A Message</p>
                     <form>
@@ -22,7 +24,7 @@ const ContactForm = () => {
                 </div>
                 </Fade>
 
-                <Fade className='address-section leading-6 md:px-20 px-10' direction='right' triggerOnce>
+                <Fade className={` ${theme == "light" ? "text-gray-900" : "text-white"}  address-section leading-6 md:px-20 px-10`} direction='right' triggerOnce>
                 <div>
                     <div>
                         <p className='font-bold flex gap-3 items-center text-xl'><LuMapPinMinus />  <span>Address</span></p>

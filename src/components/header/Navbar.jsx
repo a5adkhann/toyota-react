@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { FaBars } from "react-icons/fa6";
 import { IoLogoDribbble } from "react-icons/io";
 import { Link } from "react-router-dom";
@@ -7,8 +7,12 @@ import { GoHome } from "react-icons/go";
 import { RiCustomerService2Line } from "react-icons/ri";
 import { MdOutlineDesignServices } from "react-icons/md";
 import { CiMobile4 } from "react-icons/ci";
+import ThemeSwitcher from "../ThemeSwitcher";
+import { ThemeContext } from "../ThemeContext";
 
 const Navbar = () => {
+
+  const {theme} = useContext(ThemeContext);
 
   const [open, setOpen] = useState(false);
 
@@ -19,7 +23,7 @@ const Navbar = () => {
   
   return (
     <>
-      <div className="parent-navbar-desktop bg-slate-900 text-white flex justify-between items-center p-3">
+      <div className={` ${theme == "light" ? "bg-slate-900" : "bg-[#212121]"}  parent-navbar-desktop text-white flex justify-between items-center p-3`}>
         <Link to="/">
           <motion.div
             animate={{
@@ -62,12 +66,15 @@ const Navbar = () => {
             </li>
           </ul>
         </div>
-        <div className="navbar-toggle md:invisible visible" onClick={handleToggle}>
-          <FaBars />
+        <div className="navbar-toggle">
+          <FaBars className="md:hidden block" onClick={handleToggle}/>
+          <ThemeSwitcher />
         </div>
       </div>
 
-      <div className={`transition-all duration-300 z-100 ease-in-out md:hidden parent-navbar-mobile bg-slate-900 text-white ${open ? 'max-h-96 -translate-y-0' : 'max-h-0 -translate-y-full'}`}>
+      <div className={`overflow-hidden transition-all duration-300 ease-in-out md:hidden bg-slate-900 text-white ${
+          open ? "max-h-96 translate-y-0" : "max-h-0 translate-y-full"
+        }`}>
         <p className="flex items-center gap-1 justify-center mb-2"><GoHome className="text-red-600" />Home</p>
         <p className="flex items-center gap-1 justify-center mb-2"><RiCustomerService2Line className="text-red-600" /> About</p>
         <p className="flex items-center gap-1 justify-center mb-2"><MdOutlineDesignServices className="text-red-600" /> Services</p>

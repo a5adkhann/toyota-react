@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { ThemeContext } from '../ThemeContext'
 
 const Footer = () => {
+  const {theme} = useContext(ThemeContext);
   return (
     <>
-      <div className='footer-container bg-slate-900 place-items-center text-white grid md:grid-cols-3 grid-cols-1 md:px-20 px-10 py-14 md:gap-0 gap-20'>
+      <div className={`footer-container ${theme == "light" ? "bg-slate-900" : "bg-[#212121]"} place-items-center text-white grid md:grid-cols-3 grid-cols-1 md:px-14 px-10 py-14 md:gap-0 gap-20`}>
         <div className='section-1'>
           <div className='footer-logo-img'>
             <img src="./footer-logo.svg" width={300} alt="" />
